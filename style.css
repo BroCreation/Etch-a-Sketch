@@ -7,4 +7,15 @@
 body {
     background-color: #333;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: min(960px, 100%);
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
 }
