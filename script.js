@@ -63,15 +63,13 @@ submitBtn.addEventListener('click', () => {
     // Display first grid when it has nothing
     // Display all new grids when values have changed by removing previous grid
     // If The Grid does not have same number of boxes to the inputs then remove and display
-    if(!gridContainer.hasChildNodes()) {
-        displayGrid()
-    } 
-
     changeAllValues()
 
-    if (valuesHaveChanged()) {
+    if (!gridContainer.hasChildNodes() || valuesHaveChanged()) {
         removeGrid()
         displayGrid()
+    } else {
+        alert('You have to change the canvas size to make another canvas.')
     }
 })
 
