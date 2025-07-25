@@ -16,7 +16,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4px 20px;
     margin-bottom: 50px;
 }
 
@@ -28,10 +27,13 @@ main {
 }
 
 h1 {
+    width: 100%;
     font-size: 40px;
     text-align: center;
-    margin: 10px 0;
+    padding: 10px 20px;
     line-height: 1.5;
+    color: rgb(252, 252, 252);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .controls {
@@ -42,6 +44,10 @@ h1 {
     font-size: 16px;
     gap: 8px;
     margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    position: sticky;
+    top: 0;
 }
 
 button {
@@ -49,6 +55,20 @@ button {
     padding: 5px 10px;
     font-size: inherit;
     cursor: pointer;
+}
+
+.controls .color,
+.controls .amount,
+button {
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-radius: 2px;
+}
+
+.color:hover,
+.amount:hover,
+button:hover {
+    opacity: 0.95;
 }
 
 .controls .amount {
