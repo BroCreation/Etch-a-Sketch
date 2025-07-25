@@ -85,10 +85,17 @@ submitBtn.addEventListener('click', () => {
     }
 })
 
+// Draw only when both mousedown and paint on mouseover
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
 // Grid Container Coloring / Hover Effect
 function fillColor(e) {
     const target = e.target;
+    if(e.type === "mouseover" && !mouseDown) return
     target.style.backgroundColor = paintColor
 }
 
 gridContainer.addEventListener('mouseover', fillColor)
+gridContainer.addEventListener('mousedown', fillColor)
