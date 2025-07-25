@@ -25,6 +25,7 @@ function changeAllValues() {
     changeColor()
 }
 
+// Grid Creation
 function displayGrid() {
     for(let i = 0; i < numberOfBoxes; i++) {
         for(let j = 0; j < numberOfBoxes; j++) {
@@ -32,7 +33,7 @@ function displayGrid() {
             box.style.backgroundColor = paintColor
             box.style.width = `${boxSize}px`
             box.style.height = `${boxSize}px`
-            box.style.border = "2px solid black"
+            box.style.border = "1px solid black"
             gridContainer.appendChild(box)
         }
     }
@@ -54,6 +55,7 @@ function valuesHaveChanged() {
     return (containerBoxes !== totalInputBoxes)
 }
 
+// Change Settings
 boxesInput.addEventListener('change', changeSize)
 colorInput.addEventListener('change', changeColor)
 
@@ -72,3 +74,11 @@ submitBtn.addEventListener('click', () => {
         displayGrid()
     }
 })
+
+// Grid Container Coloring / Hover Effect
+function fillColor(e) {
+    const target = e.target;
+    target.style.backgroundColor = paintColor
+}
+
+gridContainer.addEventListener('mouseover', fillColor)
