@@ -3,6 +3,7 @@ const gridContainer = document.querySelector('.drawpad')
 const boxesInput = document.querySelector('.controls .amount')
 const colorInput = document.querySelector('.controls .color')
 const submitBtn = document.querySelector('.submit')
+const toggleRgbBtn = document.querySelector('.toggleRgb')
 
 // Grid/Container Values
 const containerWidth = parseInt(getComputedStyle(gridContainer).getPropertyValue('width'))
@@ -13,6 +14,8 @@ let paintColor = colorInput.value;
 // Range for Number of Boxes
 const min = 1;
 const max = 100;
+// RGB
+let isRgbOn = false
 
 function changeSize() {
     numberOfBoxes = boxesInput.value;
@@ -93,9 +96,25 @@ document.body.onmouseup = () => (mouseDown = false)
 // Grid Container Coloring / Hover Effect
 function fillColor(e) {
     const target = e.target;
-    if(e.type === "mouseover" && !mouseDown) return
-    target.style.backgroundColor = paintColor
+    if (e.type === "mouseover" && !mouseDown) return
+    if (isRgbOn) 
+        target.style.backgroundColor = generateRandomRGB()
+    else 
+        target.style.backgroundColor = paintColor
 }
 
+function generateRandomRGB() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+function toggleRgb() {
+    if (isRgbOn) isRgbOn = false
+    else isRgbOn = true
+}
+
+toggleRgbBtn.addEventListener('click', toggleRgb)
 gridContainer.addEventListener('mouseover', fillColor)
-gridContainer.addEventListener('mousedown', fillColor)
+gridContainer.addEventListener('mousedown', fillColor) // draw on click
